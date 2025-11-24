@@ -6,20 +6,16 @@ $nome = $_POST['name'];
 $descricao = $_POST['description'];
 $preco = $_POST['price'];
 $price = (float) $preco;
-// $promo = $_POST['promotional_price'];
-// $custo = $_POST['cost'];
 $peso = (float) $_POST['weight'];
 $largura = (float) $_POST['width'];
 $altura = (float) $_POST['height'];
 $comprimento = (float) $_POST['length'];
 $marca = $_POST['brand'];
 
-// SKU aleatório (9 dígitos)
 function gerarSku() {
     return rand(100000000, 999999999);
 }
 
-// Gera EAN-13 válido
 function gerarEan13() {
     $base = "";
     for ($i = 0; $i < 12; $i++) {
@@ -38,9 +34,7 @@ function gerarEan13() {
 
 $skuVariacao = gerarSku(); 
 $ean = gerarEan13();  
-// var_dump($ean);
 
-// die();
 $ref = gerarEan13();
 $quantidade = 10;
 
@@ -129,8 +123,6 @@ $skuAPI = $decoded['sku'] ?? null;
 $variationsAPI = $decoded['variations'] ?? [];
 $variationsJSON = json_encode($variationsAPI);
 
-// var_dump($variationsJSON);
-// die();
 
 if ($http == 200) {
    $sql = "INSERT INTO produtos (

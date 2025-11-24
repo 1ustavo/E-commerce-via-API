@@ -22,16 +22,16 @@ $ref   = $variations[0]['ref'];
 
 $novoPromocional  = $novoPreco;
 $novoCusto        = $novoPreco;
-$novoPrazo        = 2;            // prazo adicional (shippingTime)
-$novoStatus       = "enabled";    // "enabled" ou "disabled"
+$novoPrazo        = 2;            
+$novoStatus       = "enabled";    
 
-// Estoque por centro de distribuição:
+
 $stores         = 50;
 $availableStock = $estoque;
 $realStock      = $estoque;
 
 $baseUrl = "https://www.replicade.com.br/api/v3";
-$endpoint = "/products/inventory";  // ou o endpoint da versão da API correta que você usa
+$endpoint = "/products/inventory"; 
 $auth = "Authorization: Basic aXdPMzVLZ09EZnRvOHY3M1I6";
 
 $productToUpdate = [
@@ -49,7 +49,7 @@ $productToUpdate = [
     ]
 ];
 
-// Exigência de SKU ou REF
+
 if (!empty($sku)) {
     $productToUpdate["sku"] = (int)$sku;
 } elseif (!empty($ref)) {
@@ -58,16 +58,12 @@ if (!empty($sku)) {
     die("Erro: informe SKU ou REF para atualizar.");
 }
 
-// Monta JSON com array de produtos
 $data = [
     "products" => [ $productToUpdate ]
 ];
 
 $json = json_encode($data);
 
-// ===============================
-// REQUISIÇÃO PUT cURL
-// ===============================
 
 $curl = curl_init($baseUrl . $endpoint);
 

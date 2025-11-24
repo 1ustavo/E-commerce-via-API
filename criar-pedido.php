@@ -1,11 +1,5 @@
 <?php
 include 'conexao.php';
-
-// // Ativar exibição de erros do PHP
-// ini_set('display_errors', 1);
-// error_reporting(E_ALL);
-
-
 $id = $_GET['id'];
 $frete = 0;
 $idPedidoParceiro = 'PED-'.rand();
@@ -128,7 +122,6 @@ $stmt->execute([
    die();
 }
 
-// Separar HEADER e BODY
 $header = substr($response, 0, $headerSize);
 $body   = substr($response, $headerSize);
 

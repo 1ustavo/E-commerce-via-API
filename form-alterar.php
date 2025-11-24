@@ -17,7 +17,6 @@
         <?php foreach ($resultado as $produto) {?>
 
         <input type="number" name="id" value="<?= htmlspecialchars($produto['id'])?>"hidden>
-        <!-- CAMPOS SOMENTE PARA EXIBIR (NÃO EDITÁVEIS) -->
         <div class="field">
             <label>SKU</label>
             <input type="text" class="readonly" value="<?=htmlspecialchars($produto['sku']) ?? 'null'?>" readonly>
@@ -31,7 +30,6 @@
             <input type="text" class="readonly" value="<?=htmlspecialchars($produto['brand'])?>" readonly>
         </div>
 
-        <!-- CAMPOS EDITÁVEIS -->
         <h3>Alterar Valores</h3>
         <div class="field">
             <label>Novo Preço *</label>
