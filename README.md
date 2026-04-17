@@ -40,3 +40,28 @@ Diferenciais do projeto
 - Implementação de integração com API externa
 - Boas práticas de segurança (PDO + validação)
 - Estrutura modularizada para fácil manutenção
+
+## Estrutura (organizada)
+
+Este projeto roda direto no XAMPP (document root no próprio repositório), então os arquivos PHP na raiz continuam existindo como **entrypoints**.
+O código “de verdade” está sendo migrado para `app/` (orientado a objetos), mantendo compatibilidade com os scripts antigos.
+
+- `app/`
+  - `bootstrap.php`: autoloader simples (sem Composer)
+  - `Support/Config.php`: loader de configs (`config/*.php`)
+  - `Services/`: classes de integração (ex.: `ReplicaDeApi`)
+- `config/`
+  - `api.php`: URLs + header de autenticação (centralizado)
+  - `app.php`: configs gerais do app
+- `services/`
+  - wrappers compatíveis com o legado (ex.: `ApiService.php` expõe `enviarProdutoParaApi()`)
+- `helpers/`
+  - utilitários (ex.: gerador de SKU/EAN)
+- `styles.css`
+  - design system (cores, botões, forms, tabelas, header/nav)
+
+## Próximos passos sugeridos (OOP)
+
+- Criar `Controllers/` e mover a lógica dos arquivos `create-*.php` / `update-*.php` para classes.
+- Criar `Repositories/` (ex.: `ProductRepository`, `OrderRepository`) para isolar SQL.
+- Opcional: adicionar um “front controller”/router (`index.php?route=...`) e manter os arquivos antigos como “shims”.
