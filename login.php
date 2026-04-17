@@ -34,8 +34,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
 
 <div class="container">
     <h2>Entrar</h2>
-    <p style="margin-top:-6px;color:var(--muted)">Login temporário (sem banco) — você vai ligar no banco depois.</p>
-
+    <!-- ligar depois a um banco de dados para verificar o email e a senha -->
     <?php if ($error) { ?>
         <div style="margin:12px 0;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:color-mix(in srgb, var(--danger) 10%, transparent);">
             <?= htmlspecialchars($error) ?>
